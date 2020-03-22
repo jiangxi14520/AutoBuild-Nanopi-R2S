@@ -22,7 +22,7 @@ on:
     
 #环境变量：SSH_ACTIONS设置为true则会在执行完Costom Configure File后显示一个SSH的链接，可用终端或者web登录到vps进行配置
 env:
-  SSH_ACTIONS: true
+  SSH_ACTIONS: flase
   TZ: Asia/Shanghai
 
 jobs:
@@ -113,7 +113,7 @@ jobs:
           CONFIG_FILE: 'my_config'
           CONFIG_FILE_FULL: '.config'
         run: |
-          [ -e $CONFIG_FILE_FULL ] && mv $CONFIG_FILE_FULL friendlywrt-rk3328/friendlywrt/.config
+          [ -e $CONFIG_FILE ] && mv $CONFIG_FILE friendlywrt-rk3328/friendlywrt/.config
           cd friendlywrt-rk3328/friendlywrt
           make defconfig
 #          [ -e $CONFIG_FILE ] && mv $CONFIG_FILE friendlywrt-rk3328/configs
