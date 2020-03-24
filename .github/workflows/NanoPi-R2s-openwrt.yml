@@ -89,11 +89,12 @@ jobs:
           sed -i 's/https:\/\/github.com\/friendlyarm\/friendlywrt_project_luci^bb021b4b9097ad332ab40bce2a1c239d9fcf225b/https:\/\/github.com\/coolsnowwolf\/luci/' feeds.conf.default
           sed -i 's/https:\/\/git.openwrt.org\/feed\/packages.git^54266c99b2a2e37a4c01b02ae74346874db7003c/https:\/\/github.com\/coolsnowwolf\/packages/' feeds.conf.default              
       
-      - name: Install AdGuard Home && passwall
+      - name: Install AdGuard Home && passwall && upx
         run: |
           cd friendlywrt-rk3328/friendlywrt/package
           git clone https://github.com/rufengsuixing/luci-app-adguardhome.git
           git clone https://github.com/Lienol/openwrt-package
+          wget -q -O - https://github.com/upx/upx/releases/download/v3.96/upx-3.96-amd64_linux.tar.xz | tar -Jx --strip 1 -f - -C /home/runner/work/AutoBuild-Nanopi-R2S/AutoBuild-Nanopi-R2S/friendlywrt-rk3328/friendlywrt/staging_dir/host/bin/upx upx-3.96-amd64_linux/upx
           
       - name: Update Target.mk
         run: |
